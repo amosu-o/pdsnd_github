@@ -3,7 +3,7 @@ Python project: 01/10/2023
 README file: 14/10/2023
 
 ### Project Title
-Replace the Project Title
+Python script for exploring BikeShare's data
 
 ### Description
 Describe what your project is about and what it does
