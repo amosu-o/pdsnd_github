@@ -8,49 +8,23 @@ CITY_DATA = {
     'washington': 'washington.csv'
     }
 
-def get_filters():
-    """
-    Asks the user to specify a city, month, and day to analyze.
+def get_user_input(prompt, valid_inputs):
+    while True:
+        try:
+            user_input = input(prompt).strip().lower()
+            if user_input in valid_inputs:
+                return user_input
+            else:
+                print(f'Input not valid. Try again and re-enter a valid {prompt.strip(":").lower()} name or "all".')
+        except KeyboardInterrupt:
+            print('\nProcess interrupted. Returning back to the main menu.')
 
-    Returns:
-        (str) city - name of the city to analyze
-        (str) month - name of the month to filter by, or "all" to apply no month filter
-        (str) day - name of the day of the week to filter by, or "all" to apply no day filter
-    """
+def get_filters():
     print('Hello! Let\'s explore some US bikeshare data!')
 
-    while True:
-        try:
-            # To get user input for city (chicago, new york city, washington). User input are case-insensitive and whitespaces are removed.
-            city = input('City: input the name of city to analyze (Hint: Chicago, New York City, Washington): ').strip().lower()
-            if city in CITY_DATA:
-                break
-            else:
-                print('City: input not valid. Try again and re-enter a valid city name.')
-        except KeyboardInterrupt:
-            print('\nProcess interrupted. Returning back to the main menu.')
-
-    while True:
-        try:
-            # To get user input for month (all, january, february, march, ..., june). User input are case-insensitive and whitespaces are removed.
-            month = input('Month: input the month to filter by (all, january, february, march, ..., june): ').strip().lower()
-            if month in ['all', 'january', 'february', 'march', 'april', 'may', 'june']:
-                break
-            else:
-                print('Month: input not valid. Try again and re-enter a valid month name or "all".')
-        except KeyboardInterrupt:
-            print('\nProcess interrupted. Returning back to the main menu.')
-
-    while True:
-        try:
-            # To get user input for day of the week (all, monday, tuesday, wednesday, ..., sunday. User input are case-insensitive and whitespaces are removed.
-            day = input('Day: input the day of the week to filter by (all, monday, tuesday, wednesday, ..., sunday): ').strip().lower()
-            if day in ['all', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']:
-                break
-            else:
-                print('Day: input not valid. Try again and re-enter a valid day name or "all".')
-        except KeyboardInterrupt:
-            print('\nProcess interrupted. Returning back to the main menu.')
+    city = get_user_input('City: input the name of city to analyze (Hint: Chicago, New York City, Washington): ', CITY_DATA.keys())
+    month = get_user_input('Month: input the month to filter by (all, january, february, march, ..., june): ', ['all', 'january', 'february', 'march', 'april', 'may', 'june'])
+    day = get_user_input('Day: input the day of the week to filter by (all, monday, tuesday, wednesday, ..., sunday): ', ['all', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'])
 
     print('-' * 40)
     return city, month, day
