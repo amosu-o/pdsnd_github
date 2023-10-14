@@ -6,7 +6,7 @@ README file: 14/10/2023
 Python script for exploring BikeShare's data
 
 ### Description
-Describe what your project is about and what it does
+This Python project employs the pandas library to analyze bikeshare data from major U.S. cities, including Chicago, Washington, and New York City. It calculates statistics and offers users an interactive environment to filter datasets for analysis, focusing on key insights like popular days and common stations.
 
 ### Files used
 Include the files used
