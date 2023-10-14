@@ -55,27 +55,17 @@ def load_data(city, month, day):
         return None
 
 def time_stats(df):
-    """
-    Displays statistics on the most frequent times of travel.
-    
-    Args:
-        df - Pandas DataFrame containing city data
-    """
     print('\nCalculating The Most Frequent Times of Travel...\n')
     start_time = time.time()
 
-    # Display the most common month
-    most_common_month = df['Month'].mode()[0]
-    print('Most Common Month:', most_common_month)
+    # Calculate most common month, day, and start hour
+    common_values = df[['Month', 'Day of Week', 'Start Time']].mode().iloc[0]
+    most_common_month, most_common_day, _ = common_values
 
-    # Display the most common day of the week
-    most_common_day = df['Day of Week'].mode()[0]
+    print('Most Common Month:', most_common_month)
     print('Most Common Day of Week:', most_common_day)
 
-    # Extract hour from the 'Start Time' column
     df['Hour'] = df['Start Time'].dt.hour
-
-    # Display the most common start hour
     most_common_hour = df['Hour'].mode()[0]
     print('Most Common Start Hour:', most_common_hour)
 
